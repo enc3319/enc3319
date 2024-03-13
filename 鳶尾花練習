@@ -1,0 +1,15 @@
+from sklearn import datasets
+import pandas as pd
+
+iris_datasets=datasets.load_iris()  # 抓出datasets裡的iris資料
+print(type(iris_datasets))          # 印出datasets裡的iris資料格式
+
+print(type(iris_datasets.data))           # 印出四欄位資料型態
+print(type(iris_datasets.feature_names))  # 印出四欄位名稱資料型態
+print(iris_datasets.feature_names)        # 印出四欄位名稱
+
+iris_df=pd.DataFrame(iris_datasets.data,columns=iris_datasets.feature_names)  # 將資料轉成DF格式
+print(iris_df)
+
+iris_df.loc[:,"flower_class"]=iris_datasets.target  # 新增目標欄位，將 target 存放進去
+print(iris_df.head())
