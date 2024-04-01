@@ -1,0 +1,68 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Mar 13 20:35:55 2024
+
+@author: Louis_office
+"""
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.linear_model import LinearRegression
+
+temp           = np.array([29,28,34,31,25,29,32,31,24,33,25,31,26,30,32,33,34,32])  # 溫度
+iced_tea_sales = np.array([77,62,93,84,59,64,80,75,58,91,51,73,65,84,82,86,90,85])  # 飲料杯數
+print(temp.shape)
+print(iced_tea_sales.shape)
+
+temp_2d           = np.reshape(temp,(len(temp),1))                      # 將溫度轉成二維
+iced_tea_sales_2d = np.reshape(iced_tea_sales,(len(iced_tea_sales),1))  # 將飲料杯數轉成二維
+
+print(temp_2d.shape)
+print(iced_tea_sales_2d.shape)
+
+print(temp_2d)
+print(iced_tea_sales_2d)
+
+
+# 建立模型
+lm = LinearRegression()
+print(np.reshape(temp,(len(temp),1)))                      # 印出 temp 的二維資料
+print(np.reshape(iced_tea_sales,(len(iced_tea_sales),1)))  # 印出 iced_tea_sales 的二維資料
+
+# 訓練模型 lm.fit(x,y)  x=temp_2d  y=iced_tea_sales_2d
+lm.fit(np.reshape(temp,(len(temp),1)),np.reshape(iced_tea_sales,(len(iced_tea_sales),1)))
+
+# 迴歸線斜率
+print(lm.coef_)
+
+# 迴歸線截距
+print(lm.intercept_)
+
+
+# lm_predicted
+# new temp predict
+to_be_predicted = np.array([30,26,35,45,29,25,33,28,20,19,41])    # 新預測資料
+predicted_sales = lm.predict(np.reshape(to_be_predicted,
+                                      (len(to_be_predicted),1)))  # 預測結果
+# sales
+print(predicted_sales)
+
+# 畫圖
+plt.scatter(temp,iced_tea_sales,color='black')                                   # 散點圖  真實資料
+plt.plot(temp,lm.predict(np.reshape(temp,
+                                      (len(temp),1))),color='blue',linewidth=3)  # 折線圖  temp的預測結果
+plt.plot(to_be_predicted,predicted_sales,color='red',marker='^',markersize=10)   # 折線圖  新預測資料的預測結果
+
+plt.xticks(())
+plt.yticks(())
+plt.show()
+
+# 分數
+mse       = np.mean((lm.predict(temp_2d)-iced_tea_sales_2d)**2)
+# MSE 越小，表示模型的預測值與真實值之間的差異越小，模型性能越好。
+r_squared = lm.score(temp_2d,iced_tea_sales_2d)
+# r_squared 越接近 1 表示模型的解釋能力越強，匹配度越高；越接近 0 表示模型的解釋能力越差，匹配度越低。
+
+print(mse)
+print(r_squared)
