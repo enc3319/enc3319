@@ -18,7 +18,7 @@ logr = linear_model.LogisticRegression()  # 產生模型
 logr.fit(X,y)                             # 訓練模型
 
 
-# predicted = logr.predict(numpy.array([3.9,5.4,1.27,2.8,6.7]))
+# predicted = logr.predict(numpy.array([3.9,5.4,1.27,2.8,6.7]))              # 一維資料會產生錯誤
 # print(predicted)
 
 predicted = logr.predict(numpy.array([3.9,5.4,1.27,2.8,6.7]).reshape(-1,1))  # 預測
