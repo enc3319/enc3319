@@ -1,0 +1,21 @@
+from sklearn.datasets import load_iris
+from sklearn import tree
+from sklearn.model_selection import train_test_split
+from sklearn import metrics
+
+iris   = load_iris()
+iris_X = iris.data
+iris_y = iris.target
+
+X_train, X_test, y_train, y_test = train_test_split(iris_X, iris_y, test_size=0.3)
+
+clf            = tree.DecisionTreeClassifier()  # 建立模型
+iris_clf       = clf.fit(X_train,y_train)       # 訓練模型
+predicted_data = iris_clf.predict(X_test)       # 預測結果
+
+print(predicted_data)  # 印出預測結果
+print(y_test)          # 印出真實結果
+
+
+accuracy = metrics.accuracy_score(y_test,predicted_data)  # 準確率分數
+print(accuracy)
