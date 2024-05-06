@@ -34,16 +34,16 @@ print(lm.intercept_)
 
 # lm_predicted
 # new temp predict
-to_be_predicted = np.array([30,26,35,45,29,25,33,28,20,19,41])    # 新預測資料
+to_be_predicted = np.array([30,26,35,45,29,25,33,28,20,19,41])      # 新預測資料
 predicted_sales = lm.predict(np.reshape(to_be_predicted,
-                                      (len(to_be_predicted),1)))  # 預測結果
+                                        (len(to_be_predicted),1)))  # 預測結果
 # sales
 print(predicted_sales)
 
 # 畫圖
 plt.scatter(temp,iced_tea_sales,color='black')                                   # 散點圖  真實資料
 plt.plot(temp,lm.predict(np.reshape(temp,
-                                      (len(temp),1))),color='blue',linewidth=3)  # 折線圖  temp的預測結果
+                                    (len(temp),1))),color='blue',linewidth=3)    # 折線圖  temp的預測結果
 plt.plot(to_be_predicted,predicted_sales,color='red',marker='^',markersize=10)   # 折線圖  新預測資料的預測結果
 
 plt.xticks(())
