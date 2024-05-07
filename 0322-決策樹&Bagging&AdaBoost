@@ -10,21 +10,21 @@ X, y = make_classification(n_samples=1000, n_features=4,
 
 
 # DecisionTreeClassifier
-tree = DecisionTreeClassifier()              # 建立模型
-tree_clf = tree.fit(X, y)                    # 訓練模型
+tree = DecisionTreeClassifier()                # 建立模型
+tree_clf = tree.fit(X, y)                      # 訓練模型
 
-z        = tree_clf.predict([[5, 2, 2, 5]])  # DecisionTreeClassifier 預測結果
+z        = tree_clf.predict([[5, 2, 2, 5]])    # DecisionTreeClassifier 預測結果
 print(z)
-print(tree_clf.score(X, y))                  # DecisionTreeClassifier 分數
+print(tree_clf.score(X, y))                    # DecisionTreeClassifier 分數
 
 
 # BaggingClassifier  # estimator 估計器設定  # n_estimators 估計器數量
 Bag_clf = BaggingClassifier(estimator=DecisionTreeClassifier(),
                             n_estimators=10, random_state=0).fit(X, y)  # 建立模型  # 設定參數  # 訓練模型
 
-z_bag   = Bag_clf.predict([[5, 2, 2, 5]])  # BaggingClassifier 預測結果
+z_bag   = Bag_clf.predict([[5, 2, 2, 5]])      # BaggingClassifier 預測結果
 print(z_bag)
-print(Bag_clf.score(X, y))                 # BaggingClassifier 分數
+print(Bag_clf.score(X, y))                     # BaggingClassifier 分數
 
 
 # AdaBoostClassifier  # estimator 估計器設定  # n_estimators 估計器數量
