@@ -1,0 +1,35 @@
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import make_classification
+
+# 產生樣本
+X, y = make_classification(n_samples=1000, n_features=4,
+                           n_informative=2, n_redundant=0,
+                           random_state=0, shuffle=False)
+
+
+# DecisionTreeClassifier
+tree = DecisionTreeClassifier()              # 建立模型
+tree_clf = tree.fit(X, y)                    # 訓練模型
+
+z        = tree_clf.predict([[5, 2, 2, 5]])  # DecisionTreeClassifier 預測結果
+print(z)
+print(tree_clf.score(X, y))                  # DecisionTreeClassifier 分數
+
+
+# BaggingClassifier  # estimator 估計器設定  # n_estimators 估計器數量
+Bag_clf = BaggingClassifier(estimator=DecisionTreeClassifier(),
+                            n_estimators=10, random_state=0).fit(X, y)  # 建立模型  # 設定參數  # 訓練模型
+
+z_bag   = Bag_clf.predict([[5, 2, 2, 5]])  # BaggingClassifier 預測結果
+print(z_bag)
+print(Bag_clf.score(X, y))                 # BaggingClassifier 分數
+
+
+# AdaBoostClassifier  # estimator 估計器設定  # n_estimators 估計器數量
+Boost_clf = AdaBoostClassifier(n_estimators=10, random_state=0).fit(X, y)  # estimator 預設為 DecisionTreeClassifier()
+
+z_boo     = Boost_clf.predict([[5, 2, 2, 5]])  # AdaBoostClassifier 預測結果
+print(z_boo)
+print(Boost_clf.score(X, y))                   # AdaBoostClassifier 分數
