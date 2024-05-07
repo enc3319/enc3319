@@ -11,9 +11,8 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn import metrics
 
 cancer = load_breast_cancer()
-
-print(cancer.data)
-print(cancer.feature_names)
+# print(cancer.data)
+# print(cancer.feature_names)
 
 
 X_train, X_test, y_train, y_test = train_test_split(
