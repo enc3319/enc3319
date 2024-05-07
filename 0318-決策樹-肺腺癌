@@ -19,6 +19,7 @@ print(cancer.feature_names)
 X_train, X_test, y_train, y_test = train_test_split(
     cancer.data,cancer.target,stratify=cancer.target,random_state=0)  # stratify 依照 target 的比例來拆分資料
 
+
 # 未修剪  # 沒有設定深度
 # tree=DecisionTreeClassifier(random_state=0)
 # tree.fit(X_train,y_train)
@@ -26,12 +27,12 @@ X_train, X_test, y_train, y_test = train_test_split(
 # print(tree.score(X_test,y_test))
 
 
-
 # 修剪後  # 有設定深度
 tree=DecisionTreeClassifier(max_depth = 3,random_state=0)  # max_depth 設定深度
 tree.fit(X_train,y_train)
 print(tree.score(X_train,y_train))
 print(tree.score(X_test,y_test))
+
 
 accuracy = metrics.accuracy_score(tree.predict(X_test),y_test)
 print(accuracy)
