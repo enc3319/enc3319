@@ -47,7 +47,7 @@ print(accuracy1)
 from sklearn.ensemble import BaggingClassifier
 
 tree1 = DecisionTreeClassifier()
-bag = BaggingClassifier(tree1, n_estimators=300, max_samples=0.60, random_state=1)  # max_samples 樣本取樣率
+bag = BaggingClassifier(tree1, n_estimators=300, max_samples=0.60, random_state=0)  # max_samples 樣本取樣率
 
 bag.fit(X_train,y_train)
 
