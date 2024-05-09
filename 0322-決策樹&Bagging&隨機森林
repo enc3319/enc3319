@@ -23,21 +23,22 @@ X_train, X_test, y_train, y_test = train_test_split(data.data, data.target, rand
 # from sklearn.tree import DecisionTreeClassifier
 
 # Step 2: Make an instance of the Model
-clf = DecisionTreeClassifier(max_depth = 3, random_state = 0)
+tree_clf = DecisionTreeClassifier(max_depth = 3, random_state = 0)
 # clf = DecisionTreeClassifier()
 
 # Step 3: Train the model on the data
-clf.fit(X_train,y_train)
+tree_clf.fit(X_train,y_train)
 
 # Step 4: Predict labels of unseen (test) data
-clf_predict = clf.predict(X_test)
+tree_predict = tree_clf.predict(X_test)
 
-accuracy1 = metrics.accuracy_score(y_test,clf_predict)
-print('*'*10)
+accuracy1 = metrics.accuracy_score(y_test,tree_predict)
+print('-'*20,'DecisionTree')
+
+print(tree_clf.score(X_train,y_train))
+print(tree_clf.score(X_test,y_test))
+
 print(accuracy1)
-
-print(clf.score(X_train,y_train))
-print(clf.score(X_test,y_test))
 
 
 
@@ -53,11 +54,12 @@ bag.fit(X_train,y_train)
 bag_predict = bag.predict(X_test)
 
 accuracy2 = metrics.accuracy_score(y_test,bag_predict)
-print('*'*10)
-print(accuracy2)
+print('-'*20,'Bagging')
 
 print(bag.score(X_train,y_train))
 print(bag.score(X_test,y_test))
+
+print(accuracy2)
 
 
 
@@ -72,8 +74,29 @@ RandomForest_model.fit(X_train,y_train)
 forest_predict = RandomForest_model.predict(X_test)
 
 accuracy3 = metrics.accuracy_score(y_test,forest_predict)
-print('*'*10)
-print(accuracy3)
+print('-'*20,'RandomForest')
 
 print(RandomForest_model.score(X_train,y_train))
 print(RandomForest_model.score(X_test,y_test))
+
+print(accuracy3)
+
+
+
+
+# KNeighborsClassifier
+from sklearn import neighbors
+
+knn_clf = neighbors.KNeighborsClassifier()  # n_neighbors 鄰居個數 預設=5  # p 曼哈頓距離 預設=2
+
+knn_clf = knn_clf.fit(X_train,y_train)
+
+knn_predicted = knn_clf.predict(X_test)
+
+accuracy4 = metrics.accuracy_score(y_test,knn_predicted)
+print('-'*20,'KNeighbors')
+
+print(knn_clf.score(X_train,y_train))
+print(knn_clf.score(X_test,y_test))
+
+print(accuracy4)
