@@ -18,7 +18,7 @@ print(range)
 
 accuracies=[]
 
-for i in range:  #1-21
+for i in range:  # 1-21
     knn_clf       = neighbors.KNeighborsClassifier(n_neighbors=i)  # 用 for 迴圈找出最適合的 n_neighbors 參數
     knn_clf       = knn_clf.fit(train_X,train_y)
     knn_predicted = knn_clf.predict(test_X)
