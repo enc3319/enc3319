@@ -8,10 +8,10 @@ print(type(iris_datasets.data))           # 印出四欄位資料型態
 print(type(iris_datasets.feature_names))  # 印出四欄位名稱資料型態
 print(iris_datasets.feature_names)        # 印出四欄位名稱
 
-iris_df=pd.DataFrame(iris_datasets.data,columns=iris_datasets.feature_names)
+iris_df = pd.DataFrame(iris_datasets.data,columns=iris_datasets.feature_names)
 print(iris_df)
 
-iris_df.loc[:,"flower_class"]=iris_datasets.target
+iris_df.loc[:,"flower_class"] = iris_datasets.target
 print(iris_df.head())
 
 iris_df.to_csv("iris_data.csv")
