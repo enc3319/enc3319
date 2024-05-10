@@ -1,5 +1,5 @@
-import numpy
 from sklearn import linear_model
+import numpy
 #from sklearn.linear_model import LogisticRegression
 
 #Reshaped for Logistic function.
