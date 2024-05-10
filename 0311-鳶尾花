@@ -1,6 +1,7 @@
 from sklearn import datasets
 import pandas as pd
 
+
 iris_datasets=datasets.load_iris()  # 抓出datasets裡的iris資料
 print(type(iris_datasets))          # 印出datasets裡的iris資料格式
 
