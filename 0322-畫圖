@@ -27,12 +27,12 @@ def visualize_classifier(model,X,y,ax=None,cmap='rainbow'):
     ax.set(xlim=xlim,ylim=ylim)
     
     
-# DecisionTreeClassifier
-from sklearn.tree import DecisionTreeClassifier
-tree = DecisionTreeClassifier()
+# # DecisionTreeClassifier
+# from sklearn.tree import DecisionTreeClassifier
+# tree = DecisionTreeClassifier()
 
-# tree.fit(X,y)
-visualize_classifier(tree,X,y)
+# # tree.fit(X,y)
+# visualize_classifier(tree,X,y)
 
 
 
@@ -40,7 +40,7 @@ visualize_classifier(tree,X,y)
 # from sklearn.ensemble import BaggingClassifier
 
 # tree1 = DecisionTreeClassifier()
-# bag   = BaggingClassifier(tree1,n_estimators=100,max_samples=0.8,random_state=1)
+# bag   = BaggingClassifier(tree1,n_estimators=100,max_samples=0.8,random_state=1)  # 預設=10
 
 # # bag.fit(X,y)
 # visualize_classifier(bag,X,y)
@@ -50,7 +50,15 @@ visualize_classifier(tree,X,y)
 # #use RandomForestClassifier
 # from sklearn.ensemble import RandomForestClassifier
 
-# RandomForest_model = RandomForestClassifier(n_estimators=100,random_state=0)
+# RandomForest_model = RandomForestClassifier(n_estimators=100,random_state=0)  # 預設=100
 
 # # RandomForest_model.fit(X,y)
 # visualize_classifier(RandomForest_model,X,y)
+
+
+
+# KNeighborsClassifier
+from sklearn import neighbors
+knn = neighbors.KNeighborsClassifier(n_neighbors=5)  # 預設=5
+knn.fit(X,y)
+visualize_classifier(knn,X,y)
