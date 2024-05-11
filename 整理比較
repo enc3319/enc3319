@@ -1,0 +1,39 @@
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn import metrics
+
+digits = load_digits()
+
+Xtrain, Xtest, ytrain, ytest = train_test_split(digits.data, digits.target, random_state=0)
+
+
+# DecisionTreeClassifier
+tree      = DecisionTreeClassifier(random_state=0)  # max_depth 深度
+tree      = tree.fit(Xtrain,ytrain)
+tree_pred = tree.predict(Xtest)
+print(tree.score(Xtest,ytest))
+
+
+# BaggingClassifier
+bag      = BaggingClassifier(random_state=0)  # estimator 估計器  # n_estimators 估計器數量 預設=10
+bag      = bag.fit(Xtrain,ytrain)
+bag_pred = bag.predict(Xtest)
+print(bag.score(Xtest,ytest))
+
+
+# RandomForestClassifier
+forest      = RandomForestClassifier(random_state=0)  # n_estimators 估計器數量 預設=100
+forest      = forest.fit(Xtrain,ytrain)
+forest_pred = forest.predict(Xtest)
+print(forest.score(Xtest,ytest))
+
+
+# KNeighborsClassifier
+knn      = KNeighborsClassifier()  # n_neighbors 鄰居個數 預設=5
+knn      = knn.fit(Xtrain,ytrain)
+knn_pred = knn.predict(Xtest)
+print(knn.score(Xtest,ytest))
